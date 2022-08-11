@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaffPizza.HomePage">
+    <NavigationPage.TitleView>
+        <Grid
+            ColumnDefinitions="40, *, 50">
+            <StackLayout
+                Grid.Column="1"
+                HorizontalOptions="CenterAndExpand"
+                Margin="{OnPlatform iOS='0,0,15,0'}"
+                Orientation="Horizontal">
+                <Image
+                    Source="pizza_logo.png"
+                    HeightRequest="40"
+                    Aspect="AspectFill"/>
+                <Label
+                    Text="Pizzas"
+                    VerticalTextAlignment="Center"
+                    TextColor="White"
+                    FontSize="16"/>
+            </StackLayout>
+            <ImageButton
+                Source="{Binding ResourceId}"
+                Command="{Binding SortPizzaCommand}"
+                BackgroundColor="Transparent"
+                Grid.Column="2"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                x:Name="listview"
+                ItemsSource="{Binding Pizzas}"
+                ItemSelected="ListView_ItemSelected"
+                IsRefreshing="{Binding _IsRefreshing, Mode=TwoWay}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                ColumnDefinitions="60, *, 35, 35"
+                                Padding="8">
+                                <Image
+                                    Grid.Column="0"
+                                    Source="{Binding _ImageSource}"
+                                    BackgroundColor="#1abbd4"
+                                    Aspect="AspectFill"
+                                    HeightRequest="60"
+                                    WidthRequest="60"/>
+                                <StackLayout
+                                    Grid.Column="1">
+                                    <Label
+                                        Text="{Binding Nom}"
+                                        TextTransform="Uppercase"
+                                        TextColor="Black"
+                                        FontAttributes="Bold"
+                                        FontSize="17"/>
+                                    <Label
+                                        Text="{Binding Ingredients}"
+                                        TextColor="#555555"/>
+                                </StackLayout>
+                                <Label
+                                    Grid.Column="2"
+                                    Text="{Binding Prix, StringFormat='{0} $'}"
+                                    FontAttributes="Bold"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="Black"
+                                    HorizontalOptions="EndAndExpand"/>
+                                <ImageButton
+                                    Grid.Column="3"
+                                    Command="{Binding StarCommand}"
+                                    Clicked="StarClicked"
+                                    BackgroundColor="Transparent"
+                                    Source="star1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

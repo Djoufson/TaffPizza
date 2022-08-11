@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\sort_fav.png" />
+    <None Remove="Images\sort_nom.png" />
+    <None Remove="Images\sort_none.png" />
+    <None Remove="Images\sort_prix.png" />
+    <None Remove="Resources\sort_fav.png" />
+    <None Remove="Resources\sort_nom.png" />
+    <None Remove="Resources\sort_none.png" />
+    <None Remove="Resources\sort_prix.png" />
+    <None Remove="Resources\star1.png" />
+    <None Remove="Resources\star2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\sort_fav.png" />
+    <EmbeddedResource Include="Images\sort_nom.png" />
+    <EmbeddedResource Include="Images\sort_none.png" />
+    <EmbeddedResource Include="Images\sort_prix.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="2.2.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\sort_none.png" />
+    <Resource Include="Resources\sort_fav.png" />
+    <Resource Include="Resources\sort_nom.png" />
+    <Resource Include="Resources\sort_none.png" />
+    <Resource Include="Resources\sort_prix.png" />
+    <Resource Include="Resources\star1.png" />
+    <Resource Include="Resources\star2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
